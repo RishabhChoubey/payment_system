@@ -1,1 +1,43 @@
 jdk17.zip
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+paypal-clone-ui/node_modules
+paypal-clone-ui/.pnp
+paypal-clone-ui/.pnp.*
+paypal-clone-ui/.yarn/*
+paypal-clone-ui/!.yarn/patches
+paypal-clone-ui/!.yarn/plugins
+paypal-clone-ui/!.yarn/releases
+paypal-clone-ui/!.yarn/versions
+
+# testing
+paypal-clone-ui/coverage
+
+# next.js
+paypal-clone-ui/.next/
+paypal-clone-ui/out/
+
+# production
+paypal-clone-ui/build
+
+# misc
+paypal-clone-ui/.DS_Store
+paypal-clone-ui/*.pem
+
+# debug
+paypal-clone-ui/npm-debug.log*
+paypal-clone-ui/yarn-debug.log*
+paypal-clone-ui/yarn-error.log*
+paypal-clone-ui/.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+paypal-clone-ui/.env*
+
+# vercel
+paypal-clone-ui/.vercel
+paypal-clone-ui/*.tsbuildinfo
+
+# typescript
+paypal-clone-ui/next-env.d.ts
+

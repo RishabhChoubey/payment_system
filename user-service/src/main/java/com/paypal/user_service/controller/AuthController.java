@@ -38,9 +38,10 @@ public class AuthController {
     public ResponseEntity<?> signup(
             @Valid @RequestBody SignupRequest request, 
             BindingResult bindingResult,
-            @RequestHeader(value = "Authorization", required = false) String authHeader) {
+            @RequestHeader(value = "Authorization", required = false) String authHeader,
+             @RequestHeader(value = "X-Trace-Id", required = false) String traceId) {
         logger.debug("Received signup request for email: {}", request.getEmail());
-
+logger.info("Received request with TraceId: {}", traceId);
         // Validation error handling
         if (bindingResult.hasErrors()) {
             String errors = bindingResult.getFieldErrors()
@@ -124,9 +125,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request, @RequestHeader(value = "X-Trace-Id", required = false) String traceId) {
         logger.debug("Received login request for email: {}", request.getEmail());
-
+logger.info("Received request with TraceId: {}", traceId);
         Optional<User> userOpt = userRepository.findByEmail(request.getEmail());
         if (userOpt.isEmpty()) {
             logger.debug("User not found: {}", request.getEmail());
