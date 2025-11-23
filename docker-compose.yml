@@ -19,3 +19,13 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     depends_on:
       - zookeeper
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - "16686:16686"   # Jaeger UI
+      - "14250:14250"   # gRPC for collectors
+      - "4318:4318"     # OTLP/HTTP for traces
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
