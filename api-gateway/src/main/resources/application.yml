@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: gateway-service
   main:
     allow-bean-definition-overriding: true
   cloud:
@@ -39,3 +41,14 @@ logging:
     org.springframework.cloud.gateway: DEBUG
     reactor.netty.http.client: DEBUG
     org.springframework.web.cors: DEBUG
+    io.opentelemetry: DEBUG
+    io.micrometer.tracing: DEBUG
+
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0   # 100% sampling; adjust as needed
+  otlp:
+    tracing:
+      endpoint: "http://localhost:4318/v1/traces"

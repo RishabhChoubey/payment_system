@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: user-service
   datasource:
     url: jdbc:h2:mem:userdb
     username: sa
@@ -24,9 +26,22 @@ logging:
     org.springframework.web: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    io.opentelemetry: DEBUG
+    io.micrometer.tracing: DEBUG
 
 server:
   port: 8081
 
 jwt:
   secret: mySuperSecretKey1234567890!@#...
+
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0   # 100% sampling; adjust as needed
+  otlp:
+    tracing:
+      endpoint: "http://localhost:4318/v1/traces"
+
+
